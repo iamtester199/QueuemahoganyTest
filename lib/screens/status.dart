@@ -27,9 +27,9 @@ int indexvalue, intQueue;
 const appSteps = [
   'ตรวจ',
   'จ่ายเงิน',
-  'รับยา',
+  //'รับยา',
 ];
-const currentStep = 0;
+int currentStep = 0;
 
 class _StatusState extends State<Status> with SingleTickerProviderStateMixin {
   FirebaseMessaging firebaseMessaging = new FirebaseMessaging();
@@ -81,8 +81,10 @@ class _StatusState extends State<Status> with SingleTickerProviderStateMixin {
     if (intQueue == 0) {
       waitQueue = "ถึงคิวของคุณแล้ว";
     } else if (intQueue < 0) {
+      currentStep = 1;
       waitQueue = "ดำเนินการตรวจแล้ว";
     } else {
+      currentStep = 0;
       waitQueue = "รออีก ${intQueue.toString()} คิว";
     }
   }
@@ -249,7 +251,7 @@ class _StatusState extends State<Status> with SingleTickerProviderStateMixin {
                                 ),
                                 textAlign: TextAlign.center,
                               ),
-                            if (data1[indexvalue].room == '2')
+                            if (data1[indexvalue].room == '5')
                               Text(
                                 currentQueue[0].room5.toString(),
                                 style: TextStyle(
@@ -311,16 +313,16 @@ class _StatusState extends State<Status> with SingleTickerProviderStateMixin {
                         ),
                         textAlign: TextAlign.center,
                       ),
-                      Text(
-                        'รออีกประมาณ x นาที',
-                        style: TextStyle(
-                          fontFamily: 'Sukhumvit Set',
-                          fontSize: 30,
-                          color: const Color(0xff000000),
-                          fontWeight: FontWeight.w500,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
+                      // Text(
+                      //   'รออีกประมาณ x นาที',
+                      //   style: TextStyle(
+                      //     fontFamily: 'Sukhumvit Set',
+                      //     fontSize: 30,
+                      //     color: const Color(0xff000000),
+                      //     fontWeight: FontWeight.w500,
+                      //   ),
+                      //   textAlign: TextAlign.center,
+                      // ),
                       SizedBox(
                         height: 30,
                       ),

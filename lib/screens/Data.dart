@@ -1,6 +1,3 @@
-library mydata;
-
-
 List<Data> data1;
 
 class Data {
@@ -10,7 +7,8 @@ class Data {
   String physician;
   String patient;
 
-  Data(this.no, this.hn, this.physician, this.room, this.patient);
+  //Data(this.no, this.hn, this.physician, this.room, this.patient);
+  Data(this.room, this.no, this.hn, this.patient, this.physician);
 
   factory Data.fromJson(List<dynamic> json) =>
       Data(json[0], json[1], json[2], json[3], json[4]);

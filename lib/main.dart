@@ -13,8 +13,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Mahogany's Queue",
       theme: ThemeData.light().copyWith(
-        accentColor: Colors.amber,
-        primaryColor: Colors.amber,
+        accentColor: Color(0xFF014751),
+        primaryColor: Color(0xFF014751),
       ),
       home: Home(),
       //home: MyHomePage(),

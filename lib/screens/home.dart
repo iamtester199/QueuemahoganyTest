@@ -38,7 +38,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       collectionReference.snapshots().listen((response) {
         List<DocumentSnapshot> snapshots = response.docs;
         for (var snaphot in snapshots) {
-          print('MyData : ${snaphot.data()}');
+          //print('MyData : ${snaphot.data()}');
           currentQueue = new List<CurrentQueue>();
 
           setState(() {
@@ -49,18 +49,58 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     });
   }
 
+  // Future<void> senddownloadDataRequest() async {
+  //   var url =
+  //       'https://sheets.googleapis.com/v4/spreadsheets/1jJOi0vZYjMZa5SnxvHBt3w4Vl3qaHPsZo3fzACzLLqI/values/queue!A2:E/?key=AIzaSyBqaDDBMrB6s4JYcR3KVPnoKdGFmdYN-dw';
+  //   http.get(url).then((response) {
+  //     if (response.statusCode == 200) {
+  //       var data = json.decode(response.body);
+  //       //print(data['values']);
+  //       if (data['values'] != null) {
+  //         data1 = new List<Data>();
+  //         data['values'].forEach((v) {
+  //           data1.add(new Data.fromJson(v));
+  //         });
+  //       }
+  //     } else {
+  //       AwesomeDialog(
+  //           context: context,
+  //           animType: AnimType.LEFTSLIDE,
+  //           headerAnimationLoop: false,
+  //           dialogType: DialogType.ERROR,
+  //           title: 'ข้อผิดพลาด',
+  //           desc: 'ไม่สามารถเชื่อมต่อเซิพเวอร์ได้ กรุณาลองใหม่อีกครั้ง',
+  //           btnOkOnPress: () {
+  //             debugPrint('OnClcik');
+  //             senddownloadDataRequest();
+  //           },
+  //           btnOkIcon: Icons.cached,
+  //           btnOkText: "ลองใหม่อีกครั้ง",
+  //           btnOkColor: Colors.red,
+  //           onDissmissCallback: () {
+  //             debugPrint('Dialog Dissmiss from callback');
+  //           })
+  //         ..show();
+  //     }
+  //     print("Response status: ${response.statusCode}");
+  //     print("Response body: ${response.body}");
+  //   });
+  // }
+
   Future<void> senddownloadDataRequest() async {
     var url =
-        'https://sheets.googleapis.com/v4/spreadsheets/1jJOi0vZYjMZa5SnxvHBt3w4Vl3qaHPsZo3fzACzLLqI/values/queue!A2:E/?key=AIzaSyBqaDDBMrB6s4JYcR3KVPnoKdGFmdYN-dw';
+        'https://sheets.googleapis.com/v4/spreadsheets/1jJOi0vZYjMZa5SnxvHBt3w4Vl3qaHPsZo3fzACzLLqI/values/all!A2:E/?key=AIzaSyBqaDDBMrB6s4JYcR3KVPnoKdGFmdYN-dw';
     http.get(url).then((response) {
       if (response.statusCode == 200) {
         var data = json.decode(response.body);
         //print(data['values']);
         if (data['values'] != null) {
           data1 = new List<Data>();
-          data['values'].forEach((v) {
-            data1.add(new Data.fromJson(v));
-          });
+          if (data['values'][0].toString().isNotEmpty) {
+            data['values'].forEach((v) {
+              data1.add(new Data.fromJson(v));
+            });
+          }
         }
       } else {
         AwesomeDialog(
@@ -82,8 +122,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             })
           ..show();
       }
-      print("Response status: ${response.statusCode}");
-      print("Response body: ${response.body}");
+      //print("Response status: ${response.statusCode}");
+      //print("Response body: ${response.body}");
     });
   }
 
@@ -131,6 +171,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                         ),
                       ),
                       SizedBox(
+                        height: 10,
+                      ),
+                      SizedBox(
                         width: 288.0,
                         height: 100.0,
                         child: Stack(
@@ -144,6 +187,14 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                               pinBottom: true,
                               child: Container(
                                 padding: EdgeInsets.all(3),
+                                decoration: BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(40)
+                                          // topLeft: Radius.circular(40.0),
+                                          // bottomLeft: Radius.circular(40.0),
+                                          ),
+                                  color: Color(0xFF014751),
+                                ),
                                 child: FlatButton(
                                   child: Text(
                                     'ค้นหา',
@@ -151,6 +202,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                       fontSize: 40,
                                       fontFamily: 'SukhumvitSet',
                                       fontWeight: FontWeight.w600,
+                                      color: Colors.white,
                                     ),
                                   ),
                                   onPressed: () {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 import 'Data.dart';
+import 'status.dart';
 
 class Info extends StatefulWidget {
   final String hnnumber;
@@ -17,9 +18,9 @@ int indexvalue;
 const appSteps = [
   'ตรวจ',
   'จ่ายเงิน',
-  'รับยา',
+  //'รับยา',
 ];
-const currentStep = 1;
+//const currentStep = 1;
 
 class _InfoState extends State<Info> with SingleTickerProviderStateMixin {
   FirebaseMessaging firebaseMessaging = new FirebaseMessaging();
