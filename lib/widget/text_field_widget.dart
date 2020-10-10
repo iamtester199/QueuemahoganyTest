@@ -11,6 +11,7 @@ class PBTextField extends StatelessWidget {
   final Function validator;
   final TextEditingController controller;
   final int maxLength;
+  final TextInputType keyboardType;
 
   PBTextField({
     this.key,
@@ -23,6 +24,7 @@ class PBTextField extends StatelessWidget {
     this.controller,
     this.maxLength,
     this.onChange,
+    this.keyboardType
   });
 
   @override
@@ -47,27 +49,27 @@ class PBTextField extends StatelessWidget {
               )),
           Expanded(
             child: TextFormField(
-              controller: controller,
-              decoration: InputDecoration(
-                counterText: '',
-                counterStyle: TextStyle(fontSize: 0),
-                border: InputBorder.none,
-                hintText: hintText,
-                hintStyle: TextStyle(
-                  color: Color.fromRGBO(0, 28, 100, 1.0),
-                  //fontSize: 20,
-                  fontFamily: 'SukhumvitSet',
-                  fontWeight: FontWeight.w400,
+                controller: controller,
+                decoration: InputDecoration(
+                  counterText: '',
+                  counterStyle: TextStyle(fontSize: 0),
+                  border: InputBorder.none,
+                  hintText: hintText,
+                  hintStyle: TextStyle(
+                    color: Color.fromRGBO(0, 28, 100, 1.0),
+                    fontSize: 20,
+                    fontFamily: 'SukhumvitSet',
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
-              ),
-              onSaved: onSaved,
-              onChanged: onChange,
-              initialValue: initialValue,
-              key: key,
-              obscureText: obscureText,
-              validator: validator,
-              maxLength: maxLength,
-            ),
+                onSaved: onSaved,
+                onChanged: onChange,
+                initialValue: initialValue,
+                key: key,
+                obscureText: obscureText,
+                validator: validator,
+                maxLength: maxLength,
+                keyboardType: keyboardType),
           )
         ],
       ),

@@ -133,96 +133,146 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0xffffffff),
-      body: Container(
-        child: Form(
-          key: formKey,
-          child: Column(
-            children: <Widget>[
-              Container(
-                alignment: Alignment.center,
-                width: MediaQuery.of(context).size.width,
-                //color: Color(0xFF014751),
-                height: 250.0,
-                decoration: BoxDecoration(
-                  color: Color(0xFF014751),
-                  image: DecorationImage(
-                    image: AssetImage('images/logo.png'),
-                    //fit: BoxFit.fitWidth,
+      body: SingleChildScrollView(
+        physics: ClampingScrollPhysics(),
+        child: Container(
+          child: Form(
+            key: formKey,
+            child: Column(
+              children: <Widget>[
+                Container(
+                  alignment: Alignment.center,
+                  width: MediaQuery.of(context).size.width,
+                  //color: Color(0xFF014751),
+                  height: 250.0,
+                  decoration: BoxDecoration(
+                    color: Color(0xFF014751),
+                    image: DecorationImage(
+                      image: AssetImage('images/logo.png'),
+                      //fit: BoxFit.fitWidth,
+                    ),
+                    shape: BoxShape.rectangle,
                   ),
-                  shape: BoxShape.rectangle,
                 ),
-              ),
-              Container(
-                alignment: Alignment.center,
-                padding: EdgeInsets.only(top: 20.0),
-                child: Center(
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(
-                        width: 331.0,
-                        child: PBTextField(
-                          controller: hnHolder,
-                          leadingIcon: Icons.person,
-                          hintText: "Please enter your HN",
-                          onSaved: (value) => hnnumberString = value,
-                          onChange: (value) => hnnumberString = value,
-                          maxLength: 25,
+                Container(
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.only(top: 20.0),
+                  child: Center(
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          margin: const EdgeInsets.all(20),
+                          child: Text(
+                            'ระบบตรวจสอบคิวของศูนย์สุขภาพมะฮอกกานี',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontFamily: 'SukhumvitSet',
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      SizedBox(
-                        width: 288.0,
-                        height: 100.0,
-                        child: Stack(
-                          children: <Widget>[
-                            Pinned.fromSize(
-                              bounds: Rect.fromLTWH(0.0, 0.0, 288.0, 78.0),
-                              size: Size(288.0, 100.0),
-                              pinLeft: true,
-                              pinRight: true,
-                              pinTop: true,
-                              pinBottom: true,
-                              child: Container(
-                                padding: EdgeInsets.all(3),
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(40)
-                                          // topLeft: Radius.circular(40.0),
-                                          // bottomLeft: Radius.circular(40.0),
-                                          ),
-                                  color: Color(0xFF014751),
-                                ),
-                                child: FlatButton(
-                                  child: Text(
-                                    'ค้นหา',
-                                    style: TextStyle(
-                                      fontSize: 40,
-                                      fontFamily: 'SukhumvitSet',
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white,
-                                    ),
+                        SizedBox(
+                          height: 40,
+                        ),
+                        SizedBox(
+                          width: 331.0,
+                          child: PBTextField(
+                            controller: hnHolder,
+                            leadingIcon: Icons.person,
+                            hintText: "Please enter your HN",
+                            onSaved: (value) => hnnumberString = value,
+                            onChange: (value) => hnnumberString = value,
+                            maxLength: 25,
+                            keyboardType: TextInputType.number,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        SizedBox(
+                          width: 288.0,
+                          height: 100.0,
+                          child: Stack(
+                            children: <Widget>[
+                              Pinned.fromSize(
+                                bounds: Rect.fromLTWH(0.0, 0.0, 288.0, 78.0),
+                                size: Size(288.0, 100.0),
+                                pinLeft: true,
+                                pinRight: true,
+                                pinTop: true,
+                                pinBottom: true,
+                                child: Container(
+                                  padding: EdgeInsets.all(3),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(40)
+                                        // topLeft: Radius.circular(40.0),
+                                        // bottomLeft: Radius.circular(40.0),
+                                        ),
+                                    color: Color(0xFF014751),
                                   ),
-                                  onPressed: () {
-                                    if (hnHolder.value.text.isNotEmpty) {
-                                      print('press search');
-                                      print(hnnumberString);
-                                      var contain = data1.where((element) =>
-                                          element.hn ==
-                                          hnnumberString.toString());
-                                      if (contain.isEmpty) {
+                                  child: FlatButton(
+                                    child: Text(
+                                      'ดูคิวตรวจ',
+                                      style: TextStyle(
+                                        fontSize: 40,
+                                        fontFamily: 'SukhumvitSet',
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    onPressed: () {
+                                      if (hnHolder.value.text.isNotEmpty) {
+                                        print('press search');
+                                        print(hnnumberString);
+                                        var contain = data1.where((element) =>
+                                            element.hn ==
+                                            hnnumberString.toString());
+                                        if (contain.isEmpty) {
+                                          AwesomeDialog(
+                                              context: context,
+                                              animType: AnimType.LEFTSLIDE,
+                                              headerAnimationLoop: false,
+                                              dialogType: DialogType.WARNING,
+                                              title: 'ข้อผิดพลาด',
+                                              desc:
+                                                  'ไม่พบหมายเลข HN ของท่านกรุณาระบุใหม่อีกครั้ง',
+                                              btnOkOnPress: () {
+                                                debugPrint('OnClcik');
+                                                //hnnumberString = "";
+                                              },
+                                              //btnOkIcon: Icons.cached,
+                                              btnOkText: "ตกลง",
+                                              btnOkColor: Colors.red,
+                                              onDissmissCallback: () {
+                                                debugPrint(
+                                                    'Dialog Dissmiss from callback');
+                                              })
+                                            ..show();
+                                        } else {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) => Status(
+                                                  hnnumber: hnnumberString,
+                                                ),
+                                              ));
+                                        }
+                                      } else {
                                         AwesomeDialog(
                                             context: context,
                                             animType: AnimType.LEFTSLIDE,
                                             headerAnimationLoop: false,
                                             dialogType: DialogType.WARNING,
                                             title: 'ข้อผิดพลาด',
-                                            desc:
-                                                'ไม่พบหมายเลข HN ของท่านกรุณาระบุใหม่อีกครั้ง',
+                                            desc: 'กรุณาระบุหมายเลข HN ของท่าน',
                                             btnOkOnPress: () {
                                               debugPrint('OnClcik');
+                                              //hnHolder.clear();
                                               //hnnumberString = "";
                                             },
                                             //btnOkIcon: Icons.cached,
@@ -233,49 +283,20 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                                   'Dialog Dissmiss from callback');
                                             })
                                           ..show();
-                                      } else {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) => Status(
-                                                hnnumber: hnnumberString,
-                                              ),
-                                            ));
                                       }
-                                    } else {
-                                      AwesomeDialog(
-                                          context: context,
-                                          animType: AnimType.LEFTSLIDE,
-                                          headerAnimationLoop: false,
-                                          dialogType: DialogType.WARNING,
-                                          title: 'ข้อผิดพลาด',
-                                          desc: 'กรุณาระบุหมายเลข HN ของท่าน',
-                                          btnOkOnPress: () {
-                                            debugPrint('OnClcik');
-                                            //hnHolder.clear();
-                                            //hnnumberString = "";
-                                          },
-                                          //btnOkIcon: Icons.cached,
-                                          btnOkText: "ตกลง",
-                                          btnOkColor: Colors.red,
-                                          onDissmissCallback: () {
-                                            debugPrint(
-                                                'Dialog Dissmiss from callback');
-                                          })
-                                        ..show();
-                                    }
-                                  },
+                                    },
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

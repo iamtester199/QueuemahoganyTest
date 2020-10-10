@@ -79,6 +79,7 @@ class _StatusState extends State<Status> with SingleTickerProviderStateMixin {
     }
 
     if (intQueue == 0) {
+      currentStep = 0;
       waitQueue = "ถึงคิวของคุณแล้ว";
     } else if (intQueue < 0) {
       currentStep = 1;
@@ -405,14 +406,17 @@ class _StatusState extends State<Status> with SingleTickerProviderStateMixin {
                 ),
                 //SliverToBoxAdapter(
                 Container(
-                  margin: const EdgeInsets.all(8),
+                  alignment: Alignment.center,
+                  margin: const EdgeInsets.all(20),
                   constraints: const BoxConstraints(maxHeight: 120),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border:
-                        Border.all(width: 1, color: const Color(0xFF9F92E2)),
+                        //Border.all(width: 1, color: const Color(0xFF9F92E2)),
+                        Border.all(width: 1, color: const Color(0xFF000000)),
                   ),
                   child: ListView.builder(
+                    shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
                     itemCount: appSteps.length,
                     itemBuilder: (BuildContext context, int index) {
