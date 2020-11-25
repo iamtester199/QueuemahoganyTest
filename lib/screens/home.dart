@@ -12,6 +12,7 @@ import 'Data.dart';
 import 'currentQueue.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'firebase_messaging.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -29,6 +30,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     super.initState();
     senddownloadDataRequest();
     firebaseRead();
+    firebaseMessage();
   }
 
   Future firebaseRead() async {
@@ -46,6 +48,20 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           });
         }
       });
+    });
+  }
+
+  Future firebaseMessage() async {
+    final _messaging = FBMessaging.instance;
+    await _messaging.init();
+    _messaging.requestPermission().then((_) async {
+      final _token = await _messaging.getToken();
+      print('Token: $_token');
+    });
+
+    _messaging.stream.listen((event) {
+      // ignore: unnecessary_brace_in_string_interps
+      print('New Message: ${event}');
     });
   }
 
@@ -165,7 +181,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                         Container(
                           margin: const EdgeInsets.all(20),
                           child: Text(
-                            'ระบบตรวจสอบคิวของศูนย์สุขภาพมะฮอกกานี',
+                            'คลินิกพิเศษเฉพาะทางนอกเวลาราชการ',
                             style: TextStyle(
                               fontSize: 20,
                               fontFamily: 'SukhumvitSet',

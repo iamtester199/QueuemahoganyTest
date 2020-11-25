@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:466597325221:ios:697395d595ba2a5608604c</string>
+	<string>1:466597325221:ios:f7d55f30458b803008604c</string>
 	<key>DATABASE_URL</key>
 	<string>https://mahoganequeue.firebaseio.com</string>
 </dict>

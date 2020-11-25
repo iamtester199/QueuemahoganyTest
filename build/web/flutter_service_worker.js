@@ -13,7 +13,7 @@ const RESOURCES = {
 "assets/fonts/SukhumvitSet-Text.ttf": "69fc4f0f2a8869feeec71379c2cf824c",
 "assets/fonts/SukhumvitSet-Thin.ttf": "e80083d09b84fbd00e556151e4118c62",
 "assets/images/logo.png": "aef05fd227fd9a3c6739cc5bf9e2dd92",
-"assets/NOTICES": "a4958c3be9642aec654589956a4310ee",
+"assets/NOTICES": "42b71cfe835c9efccda9c0278cd1cf89",
 "assets/packages/awesome_dialog/assets/flare/error.flr": "87d83833748ad4425a01986f2821a75b",
 "assets/packages/awesome_dialog/assets/flare/error_without_loop.flr": "35b9b6c9a71063406bdac60d7b3d53e8",
 "assets/packages/awesome_dialog/assets/flare/info.flr": "bc654ba9a96055d7309f0922746fe7a7",
@@ -24,12 +24,15 @@ const RESOURCES = {
 "assets/packages/awesome_dialog/assets/flare/warning_without_loop.flr": "c84f528c7e7afe91a929898988012291",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "115e937bb829a890521f72d2e664b632",
 "favicon.ico": "d9ddf8a51efc85db78aae88bf685deb8",
+"firebase_messaging_sw.js": "ecfcc57ddd517638483ed612423b33d6",
 "icons/Icon-192.png": "34842630dca951b2fd2f67a64a5b86c9",
 "icons/Icon-512.png": "117c23edbbe0e287ab8228ab0e093f56",
-"index.html": "0d1266d0e5342a5f7fd6ffbc1b413285",
-"/": "0d1266d0e5342a5f7fd6ffbc1b413285",
-"main.dart.js": "f6a4ed891a207f2471cc3b63ef9223c0",
+"index.html": "b2cacdc135576f1a64c82cbd58b037f2",
+"/": "b2cacdc135576f1a64c82cbd58b037f2",
+"main.dart.js": "6ff00ea122e7fc121f4e55ecb298b2bb",
 "manifest.json": "4d14ea1ac3684259a6011aab5984a601",
+"OneSignalSDKUpdaterWorker.js": "ebb63ca15bba16b550232b0b0f66c726",
+"OneSignalSDKWorker.js": "ebb63ca15bba16b550232b0b0f66c726",
 "version.json": "1b29056d905adae60b5e14faa88209e8"
 };
 

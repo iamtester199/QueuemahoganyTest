@@ -11,6 +11,7 @@ import 'Data.dart';
 import 'currentQueue.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'firebase_messaging.dart';
 
 class Status extends StatefulWidget {
   final String hnnumber;
@@ -40,6 +41,15 @@ class _StatusState extends State<Status> with SingleTickerProviderStateMixin {
     hnnumberString = widget.hnnumber;
     indexvalue = data1.indexWhere((element) => element.hn == hnnumberString);
     firebaseRead();
+    //firebaseMessage();
+  }
+
+  Future firebaseMessage() async {
+    final _messaging = FBMessaging.instance;
+
+    _messaging.stream.listen((event) {
+      print('New Message: ${event.toString()}');
+    });
   }
 
   Future firebaseRead() async {
@@ -76,6 +86,8 @@ class _StatusState extends State<Status> with SingleTickerProviderStateMixin {
       intQueue = int.parse(data1[indexvalue].no) - currentQueue[0].room4;
     } else if (data1[indexvalue].room == '5') {
       intQueue = int.parse(data1[indexvalue].no) - currentQueue[0].room5;
+    } else {
+      intQueue = int.parse(data1[indexvalue].no) - currentQueue[0].room6;
     }
 
     if (intQueue == 0) {
@@ -264,6 +276,18 @@ class _StatusState extends State<Status> with SingleTickerProviderStateMixin {
                                 ),
                                 textAlign: TextAlign.center,
                               ),
+                            if (data1[indexvalue].room == '6')
+                              Text(
+                                currentQueue[0].room6.toString(),
+                                style: TextStyle(
+                                  fontFamily: 'SukhumvitSet',
+                                  fontSize: 120,
+                                  fontWeight: FontWeight.w600,
+                                  color: const Color(0xffffffff),
+                                  height: 1,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
                           ],
                         ),
                       ),
@@ -372,7 +396,7 @@ class _StatusState extends State<Status> with SingleTickerProviderStateMixin {
                                 ),
                               if (currentStep == 1)
                                 TextSpan(
-                                  text: 'ที่ช่องบริการ 1',
+                                  text: 'ที่ช่องจ่ายเงิน',
                                   style: TextStyle(
                                     fontSize: 30,
                                     fontFamily: 'SukhumvitSet',

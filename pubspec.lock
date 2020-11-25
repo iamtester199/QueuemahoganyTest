@@ -35,7 +35,7 @@ packages:
       name: awesome_dialog
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.0"
+    version: "1.2.1"
   boolean_selector:
     dependency: transitive
     description:
@@ -64,20 +64,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0-nullsafety.1"
-  charts_common:
-    dependency: transitive
-    description:
-      name: charts_common
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.8.1"
-  charts_flutter:
-    dependency: "direct main"
-    description:
-      name: charts_flutter
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.8.1"
   clock:
     dependency: transitive
     description:
@@ -91,21 +77,21 @@ packages:
       name: cloud_firestore
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.14.1+2"
+    version: "0.14.1+3"
   cloud_firestore_platform_interface:
     dependency: transitive
     description:
       name: cloud_firestore_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.1"
+    version: "2.1.2"
   cloud_firestore_web:
     dependency: transitive
     description:
       name: cloud_firestore_web
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.2.0+3"
+    version: "0.2.0+4"
   collection:
     dependency: transitive
     description:
@@ -170,19 +156,26 @@ packages:
     source: hosted
     version: "5.2.1"
   firebase:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: firebase
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "7.3.0"
+    version: "7.3.2"
+  firebase_cloud_messaging_interop:
+    dependency: "direct main"
+    description:
+      name: firebase_cloud_messaging_interop
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.2.1"
   firebase_core:
     dependency: "direct main"
     description:
       name: firebase_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.5.0"
+    version: "0.5.0+1"
   firebase_core_platform_interface:
     dependency: transitive
     description:
@@ -245,7 +238,7 @@ packages:
     source: hosted
     version: "0.0.1"
   flutter_svg:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: flutter_svg
       url: "https://pub.dartlang.org"
@@ -274,7 +267,7 @@ packages:
       name: google_fonts
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.0"
+    version: "1.1.1"
   http:
     dependency: "direct main"
     description:
@@ -309,14 +302,7 @@ packages:
       name: js
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.6.2"
-  logging:
-    dependency: transitive
-    description:
-      name: logging
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.11.4"
+    version: "0.6.3-nullsafety.1"
   matcher:
     dependency: transitive
     description:
@@ -330,14 +316,14 @@ packages:
       name: meta
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.3.0-nullsafety.3"
+    version: "1.3.0-nullsafety.4"
   page_transition:
     dependency: "direct main"
     description:
       name: page_transition
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.6"
+    version: "1.1.7+2"
   path:
     dependency: transitive
     description:
@@ -365,7 +351,7 @@ packages:
       name: path_provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.6.18"
+    version: "1.6.21"
   path_provider_linux:
     dependency: transitive
     description:
@@ -443,13 +429,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.3"
-  random_color:
-    dependency: "direct main"
-    description:
-      name: random_color
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.5"
   sa_anicoto:
     dependency: transitive
     description:
@@ -463,7 +442,7 @@ packages:
       name: sa_multi_tween
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.2"
+    version: "1.1.3"
   sa_stateless_animation:
     dependency: transitive
     description:
@@ -484,7 +463,7 @@ packages:
       name: shared_preferences
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.5.12"
+    version: "0.5.12+2"
   shared_preferences_linux:
     dependency: transitive
     description:
@@ -526,7 +505,7 @@ packages:
       name: simple_animations
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.2"
+    version: "2.2.3"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -545,7 +524,7 @@ packages:
       name: stack_trace
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.10.0-nullsafety.2"
+    version: "1.10.0-nullsafety.4"
   stream_channel:
     dependency: transitive
     description:
@@ -638,5 +617,5 @@ packages:
     source: hosted
     version: "2.2.1"
 sdks:
-  dart: ">=2.10.0-110 <=2.11.0-186.0.dev"
+  dart: ">=2.10.0-110 <=2.11.0-234.0.dev"
   flutter: ">=1.18.0-6.0.pre <2.0.0"

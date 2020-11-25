@@ -25,6 +25,9 @@
   <script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-analytics.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-messaging.js"></script>
+
+
   <script>
     // Your web app's Firebase configuration
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -41,7 +44,48 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
+
+    // var messaging = firebase.messaging()
+
+    // messaging.usePublicVapidKey('BFuvDQt-sU1L3810kdLxuYTwxO4K9AKqQXlvlCN_p0pz_i1SCspVYH2zdVs6g6U-Dt9RpTp22NR1r2oYTn7nuYE');
+
+    // messaging.getToken().then((currentToken) => {
+    //   console.log(currentToken)
+    // })
   </script>
+
+
+  <!-- <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('firebase_messaging_sw.js')
+        .then(function (registration) {
+          console.log("Service Worker Registered");
+          messaging.useServiceWorker(registration);
+        });
+    }
+  </script> -->
+
+
+  <script>
+    // if ("serviceWorker" in navigator) {
+    //   window.addEventListener("load", function () {
+    //     // navigator.serviceWorker.register("/flutter_service_worker.js");
+    //     navigator.serviceWorker.register("firebase_messaging_sw.js");
+    //     console.log("Service Worker Registered");
+    //   });
+    // }
+    const messaging = firebase.messaging();
+    if ('serviceWorker' in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register('firebase_messaging_sw.js')
+          .then(function (registration) {
+            console.log("Service Worker Registered");
+            messaging.useServiceWorker(registration);
+          });
+      });
+    }
+  </script>
+
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
@@ -52,6 +96,9 @@
       });
     }
   </script>
+
+
+
   <script src="main.dart.js" type="application/javascript"></script>
 </body>
 
