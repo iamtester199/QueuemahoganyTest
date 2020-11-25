@@ -86,7 +86,7 @@ class _StatusState extends State<Status> with SingleTickerProviderStateMixin {
       intQueue = int.parse(data1[indexvalue].no) - currentQueue[0].room4;
     } else if (data1[indexvalue].room == '5') {
       intQueue = int.parse(data1[indexvalue].no) - currentQueue[0].room5;
-    } else {
+    } else if (data1[indexvalue].room == '6') {
       intQueue = int.parse(data1[indexvalue].no) - currentQueue[0].room6;
     }
 
